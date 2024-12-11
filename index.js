@@ -137,14 +137,13 @@ console.log(`Today, i am feeling ${moodToday("")}`);
 // match("mask", "mAskinG") ➞ false
 function identicalTwoString(string1, string2) {
   if (
-    string1 === string1.toUpperCase() ||
-    (string1 === string1.toLowerCase() && string2 === string2.toUpperCase()) ||
-    string2 === string2.toLowerCase()
+    (string1 === string1.toUpperCase() || string1 === string1.toLowerCase()) &&
+    (string2 === string2.toUpperCase() || string2 === string2.toLowerCase())
   )
     return "true";
   else return "false";
 }
-console.log(identicalTwoString("aaa", "aa"));
+console.log(identicalTwoString("AA", "aa"));
 
 // Exercise 10
 
@@ -247,10 +246,11 @@ function tipAmount(amount, feedback) {
 // isVowel(99) --> false
 // isVowel({e: 'Elephant'}) --> false
 function isVowel(string) {
-  let vowels = ["A","a","E","e","I","i","O","o","U","u"]
-  if (string === vowels.includes) return "true"
-} 
-console.log (isVowel ("A"))
+  let vowels = ["A", "a", "E", "e", "I", "i", "O", "o", "U", "u"];
+  if (string === vowels.includes("")) return "true";
+  else return "false";
+}
+console.log(isVowel("a"));
 
 // Exercise 5
 
@@ -262,6 +262,9 @@ console.log (isVowel ("A"))
 // rockPaperScissors('rock', 'scissors') --> 'player 1'
 // rockPaperScissors('rock', 'paper') --> 'player 2'
 // rockPaperScissors('paper', 'paper') --> 'draw'
+function rockPaperScissors(string1, string2) {
+  let values = ["rock", "paper", "scissors"];
+}
 
 // Exercise 6
 
