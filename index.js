@@ -202,12 +202,22 @@ console.log(incrementOrDecrement(4));
 // tipAmount(100, 'good') --> 20
 // tipAmount(40, 'fair') --> 6
 
-function tipAmount(amount, feedback) {
-  if (feedback === "good") {
-    return (amount * 100) % 20;
-  }
-}
+// function tipAmount(amount, feedback) {
+//   let tipPercentage;
 
+//   if (feedback === "good") {
+//     tipPercentage = 0.2;
+//   } else if (feedback === "fair") {
+//     tipPercentage = 0.15;
+//   } else if (feedback === "poor") {
+//     tipPercentage = 0.1;
+//   } else {
+//     return "Invalid feedback";
+//   }
+
+//   return amount * tipPercentage;
+// }
+// console.log(tipAmount(100, "good"));
 // Exercise 2
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -218,6 +228,22 @@ function tipAmount(amount, feedback) {
 // Examples:
 // totalAmount(100, 'good') --> 120
 // totalAmount(40, 'fair') --> 46
+// function tipAmount(amount, feedback) {
+//   let tipPercentage;
+
+//   if (feedback === "good") {
+//     tipPercentage = 0.2;
+//   } else if (feedback === "fair") {
+//     tipPercentage = 0.15;
+//   } else if (feedback === "poor") {
+//     tipPercentage = 0.1;
+//   } else {
+//     return "Invalid feedback";
+//   }
+//   tipPercentage = amount * tipPercentage;
+//   return tipPercentage + amount;
+// }
+// console.log(tipAmount(100, "good"));
 
 // Exercise 3
 
@@ -229,7 +255,24 @@ function tipAmount(amount, feedback) {
 // Examples:
 // splitAmount(100, 'good', 5) --> 24
 // splitAmount(40, 'fair', 2) --> 23
+function splitAmount(amount, feedback, peoples) {
+  let tipPercentage;
 
+  if (feedback === "good") {
+    tipPercentage = 0.2;
+  } else if (feedback === "fair") {
+    tipPercentage = 0.15;
+  } else if (feedback === "poor") {
+    tipPercentage = 0.1;
+  } else {
+    return "Invalid feedback";
+  }
+  tipPercentage = amount * tipPercentage;
+  let tipAmount = tipPercentage + amount;
+  let splitAmount = tipAmount / peoples;
+  return splitAmount;
+}
+console.log(splitAmount(100, "good", 5));
 // Exercise 4
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -247,10 +290,9 @@ function tipAmount(amount, feedback) {
 // isVowel({e: 'Elephant'}) --> false
 function isVowel(string) {
   let vowels = ["A", "a", "E", "e", "I", "i", "O", "o", "U", "u"];
-  if (string === vowels.includes("")) return "true";
-  else return "false";
+  return vowels.includes(string);
 }
-console.log(isVowel("a"));
+console.log(isVowel("A"));
 
 // Exercise 5
 
@@ -263,8 +305,16 @@ console.log(isVowel("a"));
 // rockPaperScissors('rock', 'paper') --> 'player 2'
 // rockPaperScissors('paper', 'paper') --> 'draw'
 function rockPaperScissors(string1, string2) {
-  let values = ["rock", "paper", "scissors"];
+  if (string1 === string2) return "draw";
+  else if (
+    (string1 === "rock" && string2 === "scissor") ||
+    (string1 === "scissor" && string2 === "paper") ||
+    (string1 === "paper" && string2 === "rock")
+  )
+    return "player 1";
+  else return "player 2";
 }
+console.log(rockPaperScissors("scissor", "scissor"));
 
 // Exercise 6
 
@@ -274,6 +324,18 @@ function rockPaperScissors(string1, string2) {
 // Examples:
 // numberJoinerWhile(1, 10) --> '1_2_3_4_5_6_7_8_9_10'
 // numberJoinerWhile(12, 14) --> '12_13_14'
+function numberJoinerWhile(start, end) {
+  let result = "";
+  while (start <= end) {
+    result += start;
+    if (start < end) {
+      result += "_";
+    }
+    start++;
+  }
+  return result;
+}
+console.log(numberJoinerWhile(1, 10));
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Write a function "numberJoinerFor" which does the same thing as "numberJoinerWhile",
@@ -287,7 +349,17 @@ function rockPaperScissors(string1, string2) {
 // numberJoinerFancy(1, 10) --> '1_2_3_4_5_6_7_8_9_10'
 // numberJoinerFancy(1, 5, '~') --> 1~2~3~4~5
 // numberJoinerFancy(3, 6, '***BANANAS***') --> 1***BANANAS***2***BANANAS***3
-
+function numberJoinerFancy(start, end, space = "") {
+  let result = "";
+  for (let i = start; i <= end; i++) {
+    result += i;
+    if (i < end) {
+      result += space;
+    }
+  }
+  return result;
+}
+console.log(numberJoinerFancy(1, 10, "@@@"));
 // Exercise 7
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -295,6 +367,14 @@ function rockPaperScissors(string1, string2) {
 //
 // Example:
 // reverse("skoob") --> "books"
+function reverse(string) {
+  let result = "";
+  for (let i = string.length - 1; i >= 0; i--) {
+    result += string[i];
+  }
+  return result;
+}
+console.log(reverse("hello"));
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Write a function "findLongestWord" that takes a string of words and returns
@@ -303,7 +383,15 @@ function rockPaperScissors(string1, string2) {
 //
 // Example:
 // findLongestWord('a book full of dogs') --> 'book'
-
+function findLongestWord(string) {
+  let words = string.split(" ");
+  let longestWord = "";
+  for (let i = 0; i < words.length; i++) {
+    if (words[i].length > longestWord.length) longestWord = words[i];
+  }
+  return longestWord;
+}
+console.log(findLongestWord("Truth is the greatest illusion of them all."));
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Write a function called "nicer"
 // It should clean up the language in its input sentence.
@@ -312,7 +400,15 @@ function rockPaperScissors(string1, string2) {
 // Example:
 // nicer('mom get the heck in here and bring me a darn sandwich.')
 // > 'mom get the in here and bring me a sandwich.'
+function nicer(string) {
+  let words = string.split(" ");
+  let forbiddenWords = ["heck", "darn", "dang", "crappy"];
+  if (forbiddenWords.includes(words)) {
+    string.replace(forbiddenWords, "");
+  }
+}
 
+console.log(nicer("mom get the heck in here and bring me a darn sandwich"));
 // Exercise 8
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -323,7 +419,15 @@ function rockPaperScissors(string1, string2) {
 // Examples:
 // capitalizeAll('hello world') --> 'Hello World'
 // capitalizeAll('every day is like sunday') --> 'Every Day Is Like Sunday'
-
+function capitalizeAll(string) {
+  let words = string.split(" ");
+  for (let i = 0; i < words.length; i++) {
+    words[i] =
+      words[i].charAt(0).toUpperCase() + words[i].slice(1).toLowerCase();
+  }
+  return words.join(" ");
+}
+console.log(capitalizeAll("every day is like sunday"));
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Write a function called "split" that does the same thing as String.split
 // It should take two inputs: (1) a string and (2) a delimiter string
@@ -339,13 +443,29 @@ function rockPaperScissors(string1, string2) {
 
 // Write a function "max" that takes an array of numbers returns the highest
 // number in the array.
-
+function maxOfNumbers(number) {
+  let max = [0];
+  for (let i = 0; i <= number.length; i++) {
+    if (max < number[i]) {
+      max = number[i];
+    }
+  }
+  return max;
+}
+console.log(maxOfNumbers([15, 25, 35, 71, 21, 31]));
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Write a function "sumNumbers" which is given an array of numbers and returns
 // the sum of the numbers.
 // Example:
 // sumNumbers([1, 4, 8]) --> 13
-
+function sumNumbers(number) {
+  let sum = 0;
+  for (let i = 0; i < number.length; i++) {
+    sum += number[i];
+  }
+  return sum;
+}
+console.log(sumNumbers([1, 5, 6, 2]));
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Write a function "positives" which is given an array of numbers and
 // returns a new array containing only the positive numbers within the given array.
@@ -353,22 +473,51 @@ function rockPaperScissors(string1, string2) {
 // positives([1, -3, 5, -3, 0]) --> [1, 5]
 // positives([1, 2, 3]) --> [1, 2, 3]
 // positives([-1, -2, -3]) --> []
+function positives(numbers) {
+  let newArr = [];
+  for (let i = 0; i < numbers.length; i++) {
+    if (numbers[i] > 0) newArr.push(numbers[i]);
+  }
+  return newArr;
+}
+console.log(positives([-5, 0, 5, 2, -3]));
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Write a function "evens" which takes an array of numbers and returns a new
 // array containing only the even numbers in the given array.
 // Hint: you may want to re-use your "isEven" function from 01-predicate-functions.js
-
+function evens(numbers) {
+  let newArr = [];
+  for (let i = 0; i < numbers.length; i++) {
+    if (numbers[i] % 2 === 0) newArr.push(numbers[i]);
+  }
+  return newArr;
+}
+console.log(evens([1, 2, 3, 4, 5, 6, 7, 8]));
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Write a function "odds" which takes an array of numbers and returns a new
 // array containing only the odd numbers in the given array.
 // Hint: you may want to re-use your "isOdd" function from 01-predicate-functions.js
-
+function odds(numbers) {
+  let newArr = [];
+  for (let i = 0; i < numbers.length; i++) {
+    if (numbers[i] % 2 !== 0) newArr.push(numbers[i]);
+  }
+  return newArr;
+}
+console.log(odds([1, 2, 3, 4, 5, 6, 7, 8]));
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Write a function "integers" which takes an array of numbers and returns a new
 // array containing only the integers in the given array.
 // Hint: Do you need a new predicate function for this?
-
+function integers(numbers) {
+  let newArr = [];
+  for (let i = 0; i < numbers.length; i++) {
+    if (Number.isInteger(numbers[i])) newArr.push(numbers[i]);
+  }
+  return newArr;
+}
+console.log(integers([3.14, 2.4, 7, 8.1, 2]));
 //
 // Example:
 // integers([3.14, 2.4, 7, 8.1, 2]) --> [7, 2]
@@ -379,6 +528,14 @@ function rockPaperScissors(string1, string2) {
 //
 // Example:
 // squareDance([1, 2, 3]) --> [1, 4, 9]
+function squareDance(numbers) {
+  let newArr = [];
+  for (let i = 0; i < numbers.length; i++) {
+    newArr.push(numbers[i] ** 2);
+  }
+  return newArr;
+}
+console.log(squareDance([1, 2, 3]));
 
 //Exercise
 
@@ -391,6 +548,7 @@ function rockPaperScissors(string1, string2) {
 // Input: nums = [2,7,11,15], target = 9
 // Output: [0,1]
 // Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
+function integersNums(number) {}
 
 //Exercise
 
