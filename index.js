@@ -31,7 +31,7 @@
 function fizzBuzz(number) {
   if (number % 3 === 0) return "fizz";
   else if (number % 5 === 0) return "buzz";
-  else if (number % 3 === 0 && number % 5 === 0) return "fizzbuzz"
+  else if (number % 3 === 0 && number % 5 === 0) return "fizzbuzz";
   else return "Nan";
 }
 console.log(fizzBuzz(5));
@@ -42,12 +42,13 @@ console.log(fizzBuzz(5));
 //  In simple terms, the Factorial of 7 is solved like this:
 // 7 _ 6 _ 5 _ 4 _ 3 _ 2 _ 1 = 5,040
 function factorialOfNumbers(number) {
-    let factorial = 1
-    for (let i=1; i <= number; i++){
-        factorial *= number 
-    } return factorial
+  let factorial = 1;
+  for (let i = 1; i <= number; i++) {
+    factorial *= number;
+  }
+  return factorial;
 }
-console.log (factorialOfNumbers(7))
+console.log(factorialOfNumbers(7));
 
 // Example:
 // > console.log(factorializer(7));
@@ -56,11 +57,11 @@ console.log (factorialOfNumbers(7))
 // Exercise 3
 // Identify if a number is Odd or Even?
 // A function that lets you know if a number is Even or Odd
-function oddOrEven (number) {
-    if (number % 2 === 0) return "Even"
-    else return "Odd"
+function oddOrEven(number) {
+  if (number % 2 === 0) return "Even";
+  else return "Odd";
 }
-console.log (oddOrEven (2))
+console.log(oddOrEven(2));
 // Example:
 // > console.log(oddOrEven(7));
 // > "Odd"
@@ -74,24 +75,24 @@ console.log (oddOrEven (2))
 // Example:
 // > console.log(addUp(8));
 // > 36
-function sumOfNumbers (number) {
-    let sumNumber = 0
-    for (let i = 0; i <= number; i++) {
-    sumNumber +=number 
+function sumOfNumbers(number) {
+  let sumNumber = 0;
+  for (let i = 0; i <= number; i++) {
+    sumNumber += number;
+  }
+  return sumNumber;
 }
-return sumNumber
-}
-console.log (sumOfNumbers (5))
+console.log(sumOfNumbers(5));
 // Exercise 5
 
 // Create a function  that takes a string as argument and returns true if a string is empty and false otherwise.
 // isEmpty(“ ”)➞ true
 // isEmpty(“Chaima”)➞ false
-function stringEmpty (string) {
-    if (string === "") return "true"
-    else return "false"
+function stringEmpty(string) {
+  if (string === "") return "true";
+  else return "false";
 }
-console.log (stringEmpty ("a"))
+console.log(stringEmpty("a"));
 // Exercise 6
 
 // Create a function that takes two strings as arguments and returns true if
@@ -100,17 +101,22 @@ console.log (stringEmpty ("a"))
 
 // isEqualStr (“ Simplon”,”tunis ”)➞ false
 // isEqualStr (“CA”,”FS”)➞ true
-function charactersStringBoolean (string1,string2) {
- if (string1.lenght === string2.lenght)  return "true"
- else return "false"
-} 
-console.log (charactersStringBoolean("Silco", "Vander"))
+function charactersStringBoolean(string1, string2) {
+  if (string1.length === string2.length) return "true";
+  else return "false";
+}
+console.log(charactersStringBoolean("powder", "ekko"));
 // Exercise 7
 
 // Create a function that takes two numbers, a and b, return true if a can be divided evenly by b , return false otherwise.
 // oneDevideByTwo(9,3)➞true
 // oneDevideByTwo(10,2)➞true
 // oneDevideByTwo(13,2)➞false
+function oneDevideByTwo(number1, number2) {
+  if (number1 % number2 === 0) return "true";
+  else return "false";
+}
+console.log(oneDevideByTwo(10, 2));
 
 // Exercise 8
 
@@ -118,37 +124,70 @@ console.log (charactersStringBoolean("Silco", "Vander"))
 // "Today, I am feeling {mood}". However, if no argument is passed, return "Today, I am feeling neuter".
 // moodToday("happy") ➞ "Today, I am feeling happy"
 // moodToday( ) ➞ "Today, I am feeling neuter"
+function moodToday(string) {
+  if (string === "") return "neuter";
+  else return string;
+}
+console.log(`Today, i am feeling ${moodToday("")}`);
 
 // Exercise 9
 
 // Write a function that validates whether two strings are identical. Make it case insensitive.
 // match(“HELLO WORLD”) and (”hello world”) → true
 // match("mask", "mAskinG") ➞ false
+function identicalTwoString(string1, string2) {
+  if (
+    string1 === string1.toUpperCase() ||
+    (string1 === string1.toLowerCase() && string2 === string2.toUpperCase()) ||
+    string2 === string2.toLowerCase()
+  )
+    return "true";
+  else return "false";
+}
+console.log(identicalTwoString("aaa", "aa"));
 
 // Exercise 10
 
 // Create a function that takes a string as argument and returns "upper" if all the letters in a word are uppercase, "lower" if lowercase and "mixed" for any mix of the two.
 // getCase("javascript..") ➞ "lower"
 // getCase("SHOUT!") ➞ "upper"
-
+function lowerUpperMixedString(string) {
+  if (string === string.toUpperCase()) return "upper";
+  else if (string === string.toLowerCase()) return "lower";
+  else return "mixed";
+}
+console.log(lowerUpperMixedString("Asa"));
 // Exercise 11
 
 // Create a function that takes  a string as argument (of a person’s first and last name) and returns a string with the first and last name swapped.
 // swapName("Ada Lovelace") ➞ "Lovelace Ada"
 // swapName(“Alan Turing”)➞  “Turing Alan”
+function swapName(string) {
+  let [first, last] = string.split(" ");
+  return `${last} ${first}`;
+}
+console.log(swapName("Darude Sandstorm"));
 
 // Exercise 12
 
 // Create a function that takes a string and returns a string with its letters in alphabetical order.
 // AlphabetSoup("javascript") ➞ "aacijprstv"
 // AlphabetSoup(“simplon”) ➞”ilmnops”
-
+function alphabeticalOrderString(string) {
+  let sorted = string.split("").sort().join("");
+  return sorted;
+}
+console.log(alphabeticalOrderString("javascript"));
 // Exercise 13
 
 // Create a function that takes a number as argument and returns the incrementing (+1) for each odd number and decrementing (-1) for each even number.
 // incrementOrDecrement(5) ➞4
 // incrementOrDecrement(2) ➞3
-
+function incrementOrDecrement(number) {
+  if (number % 2 === 0) return number + 1;
+  else return number - 1;
+}
+console.log(incrementOrDecrement(4));
 
 // Exercise 1
 
@@ -163,6 +202,12 @@ console.log (charactersStringBoolean("Silco", "Vander"))
 // Examples:
 // tipAmount(100, 'good') --> 20
 // tipAmount(40, 'fair') --> 6
+
+function tipAmount(amount, feedback) {
+  if (feedback === "good") {
+    return (amount * 100) % 20;
+  }
+}
 
 // Exercise 2
 
@@ -201,6 +246,11 @@ console.log (charactersStringBoolean("Silco", "Vander"))
 // isVowel('A') --> true
 // isVowel(99) --> false
 // isVowel({e: 'Elephant'}) --> false
+function isVowel(string) {
+  let vowels = ["A","a","E","e","I","i","O","o","U","u"]
+  if (string === vowels.includes) return "true"
+} 
+console.log (isVowel ("A"))
 
 // Exercise 5
 
