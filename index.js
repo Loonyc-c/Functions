@@ -1169,12 +1169,13 @@ function minMaxLengthAverage(arr) {
   let smallest = [0];
   let largest = [0];
   let sum = 0;
+  let average = 0;
   for (let i = 0; i < arr.length; i++) {
     if (arr[i] < smallest) smallest = arr[i];
     if (arr[i] > largest) largest = arr[i];
     sum += arr[i];
-    average = sum / arr.length;
   }
+  average = sum / arr.length;
   Output.push(smallest, largest, arr.length, average);
   return Output;
 }
