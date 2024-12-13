@@ -1165,30 +1165,24 @@ console.log(numbersOnly(["text", 3, 7, "github", 13, "dev"]));
 // > console.log(minMaxLengthAverage([7, 13, 3, 77, 100]));
 // > [ 3, 100, 5, 40 ]
 
-function minMaxLengthAverage(arr) {
-  let Output = [];
-  let smallest = arr[0];
-  let largest = arr[0];
-  let sum = 0;
-<<<<<<< HEAD
-  let average = 0;
-=======
-  let average = 0
->>>>>>> bea5461fbb9a526c53b591ef199c195ddd5a73fb
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] < smallest) smallest = arr[i];
-    if (arr[i] > largest) largest = arr[i];
-    sum += arr[i];
-<<<<<<< HEAD
-=======
-   average = sum / arr.length;
->>>>>>> bea5461fbb9a526c53b591ef199c195ddd5a73fb
-  }
-  average = sum / arr.length;
-  Output.push(smallest, largest, arr.length, average);
-  return Output;
-}
-console.log(minMaxLengthAverage([7, 13, 3, 77, 100]));
+// function minMaxLengthAverage(arr) {
+//   let Output = [];
+//   let smallest = arr[0];
+//   let largest = arr[0];
+//   let sum = 0;
+//   let average = 0;
+
+//   for (let i = 0; i < arr.length; i++) {
+//     if (arr[i] < smallest) smallest = arr[i];
+//     if (arr[i] > largest) largest = arr[i];
+//     sum += arr[i];
+//     average = sum / arr.length;
+//   }
+// }
+// Output.push(smallest, largest, arr.length, average);
+// console.log(minMaxLengthAverage([7, 13, 3, 77, 100]));
+// }
+// console.log(minMaxLengthAverage([7, 13, 3, 77, 100]));
 // Exercise 4
 
 // Count the number of Words
@@ -1234,10 +1228,10 @@ function findIndex(arr, string) {
 }
 console.log(findIndex(["github", "gitlab", "bitbucket", "apollo"], "gitlab"));
 // ==== ADVANCED Array Methods ====
- 
-// Given this zoo data from around the United States, follow the instructions below.  
+
+// Given this zoo data from around the United States, follow the instructions below.
 // Use the specific array methods in the requests below to solve the problems.
- 
+
 const zooAnimals = [
   {
     animal_name: "Jackal, asiatic",
@@ -1300,13 +1294,13 @@ const zooAnimals = [
     state: "West Virginia",
   },
 ];
- 
+
 //  Request 1: .forEach()
 // The zoos want to display both the scientific name and the animal name in front of the habitats.
 // Populate the displayNames array with only the animal_name and scientific_name of each animal.
 // displayNames will be an array of strings, and each string should follow this
 // pattern: "Name: Jackal, asiatic, Scientific: Canis aureus."
- 
+
 function displayNames(array) {
   array.forEach(function (element) {
     console.log(
@@ -1325,127 +1319,192 @@ The zoos need a list of all their animal's names (animal_name only)
 converted to lower case. Using map, create a new array of strings named lowCaseAnimalNames, 
 each string following this pattern: "jackal, asiatic". Log the resut.
 */
-function animalNames(arr){
-  let lowCaseAnimalNames = arr.map(arr => arr.animal_name.toLowerCase())
-  return lowCaseAnimalNames
+function animalNames(arr) {
+  let lowCaseAnimalNames = arr.map((arr) => arr.animal_name.toLowerCase());
+  return lowCaseAnimalNames;
 }
- console.log(animalNames(zooAnimals))
+console.log(animalNames(zooAnimals));
 /* Request 3: .filter()
 The zoos are concerned about animals with a lower population count. 
 Using filter, create a new array of objects called lowPopulationAnimals 
 which contains only the animals with a population less than 5.
 */
-function lowPopulationAnimals(arr){
-  let population = arr.filter(arr => arr.population <= 5)
-
-  return population
+function lowPopulationAnimals(arr) {
+  let population = arr.filter((arr) => arr.population <= 5);
+  return population;
 }
- console.log(lowPopulationAnimals(zooAnimals))
+console.log(lowPopulationAnimals(zooAnimals));
 /* Request 4: .reduce()
 The zoos need to know their total animal population across the United States. 
 Find the total population from all the zoos using the .reduce() method. 
 Remember the reduce method takes two arguments: a callback (which itself takes two args), 
 and an initial value for the count.
 */
-function populationOFAllAnimal (arr){
-  let allPopulation = arr.reduce((total, value) => {    
-    return total += value.population }, 0)
-  return allPopulation
-  }
-console.log(populationOFAllAnimal(zooAnimals))
+function populationOFAllAnimal(arr) {
+  let allPopulation = arr.reduce((total, value) => {
+    return total + value.population;
+  }, 0);
+  return allPopulation;
+}
+console.log(populationOFAllAnimal(zooAnimals));
 // ==== Callbacks ====
- 
-/* Step 1: Create a higher-order function
-* Create a higher-order function named consume with 3 parameters: a, b and cb
-* The first two parameters can take any argument (we can pass any value as argument)
-* The last parameter accepts a callback
-* The consume function should return the invocation of cb, passing a and b into cb as arguments
- 
- 
+
+// /* Step 1: Create a higher-order function
+// * Create a higher-order function named consume with 3 parameters: a, b and cb
+// * The first two parameters can take any argument (we can pass any value as argument)
+// * The last parameter accepts a callback
+// * The consume function should return the invocation of cb, passing a and b into cb as arguments
+function step1(a, b, cb) {
+  return cb(a, b);
+}
+function divide(x, y) {
+  return x / y;
+}
+console.log(step1(5, 2, divide));
 /* Step 2: Create several functions to callback with consume();
-* Create a function named add that returns the sum of two numbers
-* Create a function named multiply that returns the product of two numbers
-* Create a function named greeting that accepts a first and last name and returns "Hello first-name last-name, nice to meet you!"
-*/
- 
+ * Create a function named add that returns the sum of two numbers
+ * Create a function named multiply that returns the product of two numbers
+ * Create a function named greeting that accepts a first and last name and returns "Hello first-name last-name, nice to meet you!"
+ */
+function step2Sum(a, b, cb) {
+  return cb(a, b);
+}
+function sum(x, y) {
+  return x + y;
+}
+console.log(step2Sum(5, 2, sum));
+
+function step2Multiply(a, b, cb) {
+  return cb(a, b);
+}
+function multiply(x, y) {
+  return x * y;
+}
+console.log(step2Multiply(5, 2, multiply));
+
+function greeting(first, Last, cb) {
+  return cb(first, Last);
+}
+function greet(first, Last) {
+  return `hello ${first} ${Last} nice to meet you`;
+}
+console.log(greeting("John", "Wick ", greet));
+
 /* Step 3: Check your work by un-commenting the following calls to consume(): */
 // 4
 // 160 // Hello Mary Poppins, nice to meet you!
- 
+
 /*
  
 */
- 
+
 ///////////////Menu Items (MVP)///////////////////
- 
-// const latte = { name: "Cafe Latte", price: 4, category: "Drinks" };
-// const burger = { name: "Burger", price: 18, category: "Lunch" };
-// const breakfastBurrito = {
-//   name: "Breakfast Burrito",
-//   price: 16,
-//   category: "Breakfast",
-// };
- 
+
+const latte = { name: "Cafe Latte", price: 4, category: "Drinks" };
+const burger = { name: "Burger", price: 18, category: "Lunch" };
+const breakfastBurrito = {
+  name: "Breakfast Burrito",
+  price: 16,
+  category: "Breakfast",
+};
+let menu = [];
+menu.push(latte, burger, breakfastBurrito);
+console.log(menu);
 // /* Task 1a: write a function to return more menu items with the same format as the items above. */
- 
-// function createMenuItem(name, cost, category) {
-//   /* Code here */
-// }
- 
-// /* Task 1b: use your function to create 3 more menu items. You may add any items to the menu that you'd like */
- 
-// /* Task 2: You're having a lunch special! 25% off for teachers and students, 10% off for everyone else. Add a method to your burger object that automatically calculates price given a string as a parameter.
+
+// function createMenuItem(name, cost, category) {}
+// console.log(createMenuItem([]));
+// /* Task 1b: use your function to create 3 more menu items.
+// You may add any items to the menu that you'd like */
+
+// /* Task 2: You're having a lunch special!
+// 25% off for teachers and students, 10% off for everyone else.
+// Add a method to your burger object that automatically calculates price given a
+// string as a parameter.
 // Your method should accept:
 // (1) A string (teacher, student, or public)
 // and should return a number.
-// For example, burger.discount("teacher") would return 13.5 and burger.discount("public") would return 16.2*/
- 
+// For example, burger.discount("teacher") would return 13.5 and burger.
+// discount("public") would return 16.2*/
+// ++++++++++++++
+// function displayNames(array) {
+//   array.forEach(function (element) {
+//     console.log(
+//       `name: ${element.animal_name}, scientific: ${element.scientific_name}`
+//     );
+//   });
+// }
+// console.log(displayNames(zooAnimals));
+// ++++++++++++++++++
+function lunchSpecial(string) {
+  let discount;
+  if (string === "teacher" || string === "student") {
+    discount = 0.25;
+  } else if (string === "public") discount = 0.1;
+  let result = burger.price - burger.price * discount;
+  return result;
+}
+console.log(lunchSpecial("public"));
 // ///////////////Reviews (MVP)///////////////////
- 
-// const reviews = [
-//   {
-//     name: "Daniela",
-//     rating: 5,
-//     feedback: "Beautiful atmosphere and wonderful vegan options!",
-//   },
-//   {
-//     name: "Jack",
-//     rating: 3,
-//     feedback:
-//       "A little too hipster for my taste, but the burger was decent, if overpriced",
-//   },
-//   { name: "Miranda", rating: 4, feedback: "fun trivia and cool vibes" },
-//   {
-//     name: "Wen",
-//     rating: 4.5,
-//     feedback:
-//       "I don't leave my house often, but when I do, it's for this place. Highly reccomend.",
-//   },
-//   {
-//     name: "Brett",
-//     rating: 3,
-//     feedback:
-//       "great selection of snacks and a nice cafe area to get work done during the day.",
-//   },
-//   {
-//     name: "Julius",
-//     rating: 2,
-//     feedback:
-//       "I was largely unimpressed by this venue. Nothing special on the menu and too expensive. The atmosphere is polarizing, and not for me, but I think some would like it.",
-//   },
-//   {
-//     name: "Lauren",
-//     rating: 4,
-//     feedback:
-//       "Absolutely love that they have karaoke Fridays! Food and drink selection is okay.",
-//   },
-//   { name: "Reyna", rating: 3.5, feedback: "" },
-// ];
- 
+
+const reviews = [
+  {
+    name: "Daniela",
+    rating: 5,
+    feedback: "Beautiful atmosphere and wonderful vegan options!",
+  },
+  {
+    name: "Jack",
+    rating: 3,
+    feedback:
+      "A little too hipster for my taste, but the burger was decent, if overpriced",
+  },
+  { name: "Miranda", rating: 4, feedback: "fun trivia and cool vibes" },
+  {
+    name: "Wen",
+    rating: 4.5,
+    feedback:
+      "I don't leave my house often, but when I do, it's for this place. Highly reccomend.",
+  },
+  {
+    name: "Brett",
+    rating: 3,
+    feedback:
+      "great selection of snacks and a nice cafe area to get work done during the day.",
+  },
+  {
+    name: "Julius",
+    rating: 2,
+    feedback:
+      "I was largely unimpressed by this venue. Nothing special on the menu and too expensive. The atmosphere is polarizing, and not for me, but I think some would like it.",
+  },
+  {
+    name: "Lauren",
+    rating: 4,
+    feedback:
+      "Absolutely love that they have karaoke Fridays! Food and drink selection is okay.",
+  },
+  { name: "Reyna", rating: 3.5, feedback: "" },
+];
+
 // /* Task 3: Console.log just Julius' feedback */
- 
-// /* Task 4: Add a new rating with your (fictitious) opinions of the restaurant in the same format as the reviews above. */
- 
+function justJulius(arr) {
+  let justJulius = arr.filter((arr) => arr.name == "Julius");
+  return justJulius;
+}
+console.log(justJulius(reviews));
+
+// /* Task 4: Add a new rating with your (fictitious)
+// opinions of the restaurant in the same format as the reviews above. */
+function addNewReview(arr, my) {
+  let addedNewReview = arr.map((arr) => {
+    return arr;
+  });
+  return addedNewReview;
+}
+console.log(
+  addNewReview(reviews, { name: "battulga", rating: 0, feedback: "blablabla" })
+);
 // /* Task 5: Add the following feedback to Reyna's rating - "this place is chill with really cool people, great for getting work done on weekdays"
 // /*  Task 6: Write a function to return a review based on the index of the review in the array.
 // Your function should take two arguments:
@@ -1459,20 +1518,20 @@ console.log(populationOFAllAnimal(zooAnimals))
 // function getReviewByIndex(reviews, index) {
 //   /* code here */
 // }
- 
+
 // /* Exercise 12
- 
+
 // Create the use object and the object should have following key
 // firstName
 // lastName
 // currentLocation
 // favoriteSongs
 // age
- 
+
 // 1. console log 'hello user's firstname and Lastname'
 // 2.How's the weather in 'currentLocation'
 // 3. console log user's favorite songs
- 
+
 // /* STRETCH 3:  This challenge is not related to the data above!
 // Write a function called carMarker
 // Your function should accept:
@@ -1484,20 +1543,20 @@ console.log(populationOFAllAnimal(zooAnimals))
 //          (1) causes the odometer in the object to be increased by the distance,
 //          (2) returns the updated value of the `odometer`.
 // */
- 
+
 // function carMaker(/* code here */) {
 //   /* code here */
 // }
- 
+
 // /*
 //   To get started:
 //   1. Remove the lines involving the removeThisToStart variable, so that the
 //      program doesn't exit early.
 //   2. Implement userCanAffordSofa
 // */
- 
+
 // // Exercise 13
- 
+
 // let superChimpOne = {
 //   name: "Chad",
 //   species: "Chimpanzee",
@@ -1543,20 +1602,20 @@ console.log(populationOFAllAnimal(zooAnimals))
 // }
 // // After you have created the other object literals, add the astronautID property to each one.
 // //Create an array to hold the animal objects.
- 
+
 // // Print out the relevant information about each animal.
 // // return `${name} is a ${species}. They are ${age} years old and ${mass} kilograms. Their ID is ${astronautID}.`;
 // function crewReports(animal) {}
- 
+
 // // Exercise 14
- 
+
 // var movieDatabase = {
 //   title: "Pulp Fiction",
 //   duration: 120,
 //   stars: ["Bruce Willis", "Uma Thurman"],
 // };
 // // write the function to return Movie name and duration and start
- 
+
 // // Create an object to hold information on your favorite recipe. It should have properties for title (a string), servings (a number), and ingredients (an array of strings).
 // // const recipe = {
 // //   title: "Mole",
@@ -1566,9 +1625,9 @@ console.log(populationOFAllAnimal(zooAnimals))
 // // console.log title of the recipe
 // // console.log 'Servings: recipe servings'
 // //console.log the ingredients one by one
- 
+
 // // //Task2
- 
+
 // // let programming = {
 // //   languages: ["JavaScript", "Python", "Ruby"],
 // //   isChallenging: true,
@@ -1577,7 +1636,7 @@ console.log(populationOFAllAnimal(zooAnimals))
 // //   jokes:
 // //     "http://stackoverflow.com/questions/234075/what-is-your-best-programmer-joke",
 // // };
- 
+
 // // Write the command to add the language "Go" to the end of the languages array.
 // // Change the difficulty to the value of 7.
 // // Using the delete keyword, write the command to remove the jokes key from the programming object.
@@ -1585,33 +1644,33 @@ console.log(populationOFAllAnimal(zooAnimals))
 // // Using a loop, iterate through the languages array and console.log all of the languages.
 // // Using a loop, console.log all of the keys in the programming object.
 // // Using a loop, console.log all of the values in the programming object.
- 
+
 // // /Menu Items (MVP)///////////////////
- 
+
 // // const latte = {
 // //   name: "Cafe Latte",
 // //   price: 4,
 // //   category: "Drinks",
 // // };
- 
+
 // // const burger = { name: "Burger", price: 18, category: "Lunch" };
 // // const breakfastBurrito = {
 // //   name: "Breakfast Burrito",
 // //   price: 16,
 // //   category: "Breakfast",
 // // };
- 
+
 // // /* Task 1a: write a function to return more menu items with the same format as the items above. */
- 
+
 // // console.log(createMenuItem("Buuz", 45, "Breakfast"));
 // // console.log(createMenuItem("Buuz", 45, "Breakfast"));
 // // console.log(createMenuItem("Buuz", 45, "Breakfast"));
 // // console.log(createMenuItem("Buuz", 45, "Breakfast"));
 // // console.log(createMenuItem("Coffee", 5, "Dinner"));
 // // /* Task 1b: use your function to create 3 more menu items. You may add any items to the menu that you'd like */
- 
+
 // // /* Task 2: You're having a lunch special! 25% off for teachers and students, 10% off for everyone else. Add a method to your burger object that automatically calculates price given a string as a parameter.
- 
+
 // // console.log(burger.discount("student"));
 // // console.log(burger.discount("public"));
 // // c;
