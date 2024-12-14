@@ -1301,7 +1301,7 @@ const zooAnimals = [
 // displayNames will be an array of strings, and each string should follow this
 // pattern: "Name: Jackal, asiatic, Scientific: Canis aureus."
 
-function displayNames(array) {
+function displayNames(array, name, scientific) {
   array.forEach(function (element) {
     console.log(
       `name: ${element.animal_name}, scientific: ${element.scientific_name}`
@@ -1490,22 +1490,31 @@ const reviews = [
 // /* Task 3: Console.log just Julius' feedback */
 function justJulius(arr) {
   let justJulius = arr.filter((arr) => arr.name == "Julius");
-  return justJulius;
+  return justJulius.map((justJulius) => justJulius.feedback);
 }
 console.log(justJulius(reviews));
 
 // /* Task 4: Add a new rating with your (fictitious)
 // opinions of the restaurant in the same format as the reviews above. */
-function addNewReview(arr, my) {
-  let addedNewReview = arr.map((arr) => {
-    return arr;
-  });
-  return addedNewReview;
+// function addNewReview(arr, my) {
+//   let addedNewReview = arr.map((arr) => {
+//     return arr;
+//   });
+//   return addedNewReview;
+// }
+// console.log(addNewReview(addNewReview(reviews, 5)));
+// /* Task 5: Add the following feedback to Reyna's rating - "this place is chill with really cool people, great for getting work done on weekdays"
+function addNewReview(arr, string) {
+  let findReyna = arr.filter((arr) => arr.name == "Reyna");
+  findReyna[0].feedback = string;
+  return findReyna;
 }
 console.log(
-  addNewReview(reviews, { name: "battulga", rating: 0, feedback: "blablabla" })
+  addNewReview(
+    reviews,
+    "this place is chill with really cool people, great for getting work done on weekdays"
+  )
 );
-// /* Task 5: Add the following feedback to Reyna's rating - "this place is chill with really cool people, great for getting work done on weekdays"
 // /*  Task 6: Write a function to return a review based on the index of the review in the array.
 // Your function should take two arguments:
 // (1) an array which holds all of the reviews
@@ -1515,9 +1524,10 @@ console.log(
 // * For example, if getReviewByIndex is invoked with reviews and the number 0
 // * it will return `Daniela gave the restaurant a 5 star review and their feedback was: Beautiful atmosphere and wonderful vegan options!`
 // */
-// function getReviewByIndex(reviews, index) {
-//   /* code here */
-// }
+function getReviewByIndex(reviews, index) {
+  return `${reviews[index].name} gave the restaurant a ${reviews[index].rating} and their feedback was: ${reviews[index].feedback}`;
+}
+console.log(getReviewByIndex(reviews, 1));
 
 // /* Exercise 12
 
@@ -1531,6 +1541,16 @@ console.log(
 // 1. console log 'hello user's firstname and Lastname'
 // 2.How's the weather in 'currentLocation'
 // 3. console log user's favorite songs
+const myProfile = {
+  firstName: "Battulga",
+  lastName: "Batkhuyag",
+  currentLocation: "Ulaanbator",
+  favoriteSongs: "Ma Meilleure Ennemie",
+  age: "26",
+};
+console.log(`hello ${myProfile.firstName} ${myProfile.lastName}`);
+console.log(`How's the weather in ${myProfile.currentLocation}`);
+console.log(`my favorite songs is ${myProfile.favoriteSongs}`);
 
 // /* STRETCH 3:  This challenge is not related to the data above!
 // Write a function called carMarker
@@ -1543,6 +1563,18 @@ console.log(
 //          (1) causes the odometer in the object to be increased by the distance,
 //          (2) returns the updated value of the `odometer`.
 // */
+const odometerContainer = {
+  odometer: 1000,
+  drive: 240,
+};
+
+// []    =. [1] [2] array index
+//  {key: value}  key key = change .
+function carMarker(odometerCal) {
+  odometerCal.odometer += odometerCal.drive;
+  return odometerCal;
+}
+console.log(carMarker(odometerContainer));
 
 // function carMaker(/* code here */) {
 //   /* code here */
@@ -1555,90 +1587,111 @@ console.log(
 //   2. Implement userCanAffordSofa
 // */
 
-// // Exercise 13
+// Exercise 13
 
-// let superChimpOne = {
-//   name: "Chad",
-//   species: "Chimpanzee",
-//   mass: 9,
-//   age: 6,
-//   astronautID: 1,
-//   move: move(),
-// };
-// let salamander = {
-//   name: "Lacey",
-//   species: "Axolotl Salamander",
-//   mass: 0.1,
-//   age: 5,
-//   astronautID: 10,
-//   move: move(),
-// };
-// let animal1 = {
-//   name: "Brad",
-//   species: "Chimpanzee",
-//   mass: 11,
-//   age: 6,
-//   astronautID: 5,
-//   move: move(),
-// };
-// let animal2 = {
-//   name: "Leroy",
-//   species: "Beagle",
-//   mass: 14,
-//   age: 5,
-//   astronautID: 7,
-//   move: move(),
-// };
-// let animal3 = {
-//   name: "Almina",
-//   species: "Tardigrade",
-//   mass: 0.0000000001,
-//   age: 1,
-//   astronautID: 3,
-//   move: move(),
-// };
-// function move() {
-//   return Math.round(Math.random() * 10);
-// }
+let superChimpOne = {
+  name: "Chad",
+  species: "Chimpanzee",
+  mass: 9,
+  age: 6,
+  astronautID: 1,
+  move: move(),
+};
+let salamander = {
+  name: "Lacey",
+  species: "Axolotl Salamander",
+  mass: 0.1,
+  age: 5,
+  astronautID: 10,
+  move: move(),
+};
+let animal1 = {
+  name: "Brad",
+  species: "Chimpanzee",
+  mass: 11,
+  age: 6,
+  astronautID: 5,
+  move: move(),
+};
+let animal2 = {
+  name: "Leroy",
+  species: "Beagle",
+  mass: 14,
+  age: 5,
+  astronautID: 7,
+  move: move(),
+};
+let animal3 = {
+  name: "Almina",
+  species: "Tardigrade",
+  mass: 0.0000000001,
+  age: 1,
+  astronautID: 3,
+  move: move(),
+};
+function move() {
+  return Math.round(Math.random() * 10);
+}
 // // After you have created the other object literals, add the astronautID property to each one.
 // //Create an array to hold the animal objects.
-
+const crew = [];
+crew.push(superChimpOne, salamander, animal1, animal2, animal3);
+console.log(crew);
 // // Print out the relevant information about each animal.
 // // return `${name} is a ${species}. They are ${age} years old and ${mass} kilograms. Their ID is ${astronautID}.`;
-// function crewReports(animal) {}
+function crewReports(animal) {
+  const { name, species, age, mass, astronautID } = animal;
+  return `${name} is a ${species}. They are ${age} years old and ${mass} kilograms. Their ID is ${astronautID}`;
+}
+crew.forEach((animals) => console.log(crewReports(animals)));
 
 // // Exercise 14
 
-// var movieDatabase = {
-//   title: "Pulp Fiction",
-//   duration: 120,
-//   stars: ["Bruce Willis", "Uma Thurman"],
-// };
+let movieDatabase = {
+  title: "Pulp Fiction",
+  duration: 120,
+  stars: ["Bruce Willis", "Uma Thurman"],
+};
 // // write the function to return Movie name and duration and start
+function ex14(arr) {
+  const { title, duration, stars } = movieDatabase;
+  return `Movie name ${title} duration ${duration} start ${stars}`;
+}
+console.log(ex14(movieDatabase));
 
-// // Create an object to hold information on your favorite recipe. It should have properties for title (a string), servings (a number), and ingredients (an array of strings).
-// // const recipe = {
-// //   title: "Mole",
-// //   servings: 2,
-// //   ingredients: ["cumin", "cinnamon", "cocoa"],
-// // };
-// // console.log title of the recipe
-// // console.log 'Servings: recipe servings'
-// //console.log the ingredients one by one
+// // Create an object to hold information on your favorite recipe.
+// It should have properties for title (a string), servings (a number), and ingredients (an array of strings).
+const recipe = {
+  title: "Mole",
+  servings: 2,
+  ingredients: ["cumin", "cinnamon", "cocoa"],
+};
+console.log(recipe.title);
+console.log(recipe.servings);
+console.log(recipe.ingredients);
+
+for (let i = 0; i < recipe.ingredients.length; i++) {
+  console.log(recipe.ingredients[i]);
+}
+
 
 // // //Task2
 
-// // let programming = {
-// //   languages: ["JavaScript", "Python", "Ruby"],
-// //   isChallenging: true,
-// //   isRewarding: true,
-// //   difficulty: 8,
-// //   jokes:
-// //     "http://stackoverflow.com/questions/234075/what-is-your-best-programmer-joke",
-// // };
+let programming = {
+  languages: ["JavaScript", "Python", "Ruby"],
+  isChallenging: true,
+  isRewarding: true,
+  difficulty: 8,
+  jokes:
+    "http://stackoverflow.com/questions/234075/what-is-your-best-programmer-joke",
+};
 
 // // Write the command to add the language "Go" to the end of the languages array.
+programming.languages.push("Go")
+console.log(programming.languages)
 // // Change the difficulty to the value of 7.
+programming.isChallenging = 7
+console.log(programming.isChallenging)
 // // Using the delete keyword, write the command to remove the jokes key from the programming object.
 // // Write the command to add a new key called isFun and a value of true to the programming object.
 // // Using a loop, iterate through the languages array and console.log all of the languages.
