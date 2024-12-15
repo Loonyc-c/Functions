@@ -1674,7 +1674,6 @@ for (let i = 0; i < recipe.ingredients.length; i++) {
   console.log(recipe.ingredients[i]);
 }
 
-
 // // //Task2
 
 let programming = {
@@ -1687,42 +1686,62 @@ let programming = {
 };
 
 // // Write the command to add the language "Go" to the end of the languages array.
-programming.languages.push("Go")
-console.log(programming.languages)
+programming.languages.push("Go");
+console.log(programming.languages);
 // // Change the difficulty to the value of 7.
-programming.isChallenging = 7
-console.log(programming.isChallenging)
-// // Using the delete keyword, write the command to remove the jokes key from the programming object.
-// // Write the command to add a new key called isFun and a value of true to the programming object.
-// // Using a loop, iterate through the languages array and console.log all of the languages.
+programming.difficulty = 7;
+console.log(programming.difficulty);
+// // Using the delete keyword, write the command to remove the jokes key from
+// the programming object.
+delete programming.jokes;
+console.log(programming);
+// // Write the command to add a new key called isFun and a value of true to the
+// programming object.
+programming.isFun = true;
+console.log(programming);
+// // Using a loop, iterate through the languages array and console.
+// log all of the languages.
+for (let i = 0; i < programming.languages.length; i++) {
+  console.log(programming.languages[i]);
+}
 // // Using a loop, console.log all of the keys in the programming object.
+for (let i = 0; i < programming.length; i++) {
+  console.log(programming);
+}
 // // Using a loop, console.log all of the values in the programming object.
-
+for (let key in programming) {
+  console.log(key);
+}
 // // /Menu Items (MVP)///////////////////
 
-// // const latte = {
-// //   name: "Cafe Latte",
-// //   price: 4,
-// //   category: "Drinks",
-// // };
+const latte1 = {
+  name: "Cafe Latte",
+  price: 4,
+  category: "Drinks",
+};
 
-// // const burger = { name: "Burger", price: 18, category: "Lunch" };
-// // const breakfastBurrito = {
-// //   name: "Breakfast Burrito",
-// //   price: 16,
-// //   category: "Breakfast",
-// // };
+const burger1 = { name: "Burger", price: 18, category: "Lunch" };
+const breakfastBurrito1 = {
+  name: "Breakfast Burrito",
+  price: 16,
+  category: "Breakfast",
+};
 
-// // /* Task 1a: write a function to return more menu items with the same format as the items above. */
-
-// // console.log(createMenuItem("Buuz", 45, "Breakfast"));
-// // console.log(createMenuItem("Buuz", 45, "Breakfast"));
-// // console.log(createMenuItem("Buuz", 45, "Breakfast"));
+// // /* Task 1a: write a function to return more menu items with the same format as
+// the items above. */
+function addMoreMenu() {
+  const menuItems = { name: "Buuz", price: 1400, category: "Lunch" };
+}
+console.log(addMoreMenu());
 // // console.log(createMenuItem("Buuz", 45, "Breakfast"));
 // // console.log(createMenuItem("Coffee", 5, "Dinner"));
-// // /* Task 1b: use your function to create 3 more menu items. You may add any items to the menu that you'd like */
+// // /* Task 1b: use your function to create 3 more menu items.
+// You may add any items to the menu that you'd like */
 
-// // /* Task 2: You're having a lunch special! 25% off for teachers and students, 10% off for everyone else. Add a method to your burger object that automatically calculates price given a string as a parameter.
+// // /* Task 2: You're having a lunch special! 25% off for
+// teachers and students, 10% off for everyone else.
+// Add a method to your burger object that automatically calculates price given a string
+// as a parameter.
 
 // // console.log(burger.discount("student"));
 // // console.log(burger.discount("public"));
